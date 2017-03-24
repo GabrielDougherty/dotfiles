@@ -1,16 +1,4 @@
-set number
-syntax enable
-set background=dark
-
-" Without hard tabs
-" set expandtab
-" set shiftwidth=2
-" set softtabstop=2
-" With hard tabs only
-set shiftwidth=4
-set tabstop=4
-set autoindent
-set ignorecase
+set viminfo+=n~/.vim/viminfo
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -25,7 +13,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " file explorer
 Plugin 'scrooloose/nerdtree'
-Plugin 'powerline/powerline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,3 +31,26 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+set number
+syntax enable
+set background=dark
+
+" Without hard tabs
+" set expandtab
+" set shiftwidth=2
+" set softtabstop=2
+" With hard tabs only
+set shiftwidth=4
+set tabstop=4
+set autoindent
+set ignorecase
+
+"airline
+set laststatus=2
+
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
