@@ -82,4 +82,3 @@ source $ZSH/oh-my-zsh.sh
 autoload -U promptinit
 promptinit
 prompt elite2
-alias aiden-connect="ssh gabriel@184.56.94.5"
