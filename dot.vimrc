@@ -54,3 +54,8 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
+"Fixes backspace weirdness on openBSD
+set backspace=indent,eol,start
+
+"Open NERDTree with ctrl-x
+map <C-x> :NERDTreeToggle<CR>
