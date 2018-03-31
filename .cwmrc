@@ -42,9 +42,9 @@ bind-key M-h        window-hide # for org-mode
 
 # application menu
 command Thunar Thunar
-command Wifi "urxvt -title \"wifi\" -e sh -c \"su -\""
+command Wifi "urxvt -name wifi -e sh -c \"su -\""
 command Firefox firefox
-command Root "urxvt -title \"root\" -e sh -c \"su -\""
+command Root "urxvt -name root -e sh -c \"su -\""
 command Top "urxvt -e top"
 command DeadBeef deadbeef
 #
@@ -61,7 +61,8 @@ autogroup 1		"urxvt,URxvt"
 autogroup 2		"Firefox"
 autogroup 3		"libreoffice"
 autogroup 3     "libreoffice-writer"
-autogroup 4		"DeadBeef" # does not work
+autogroup 3 	"urxvt,wifi"
+autogroup 4		"deadbeef" # does not work
 autogroup 4     "Thunar"
 autogroup 9		"Emacs"
 
