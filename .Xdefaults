@@ -66,9 +66,10 @@ URxvt*font: xft:DejavuSansMono:size=10
 *color15: #fdf6e3 
 
 !! https://nixmeal.wordpress.com/2012/07/24/copypaste-text-in-urxvt-rxvt-unicode-using-keyboard/
+ 
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
- 
-URxvt.iso14755: False
- 
-URxvt.perl-ext-common: default,clipboard
+! just use middle click and shift-insert
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
