@@ -1,0 +1,74 @@
+# unbinds for emacs org-mode
+unbind-key M-Return # 
+unbind-key M-Left
+unbind-key M-Right
+unbind-key M-l
+
+# unbinds for emacs
+unbind-key C-slash
+
+
+# status bar stuff
+ignore dzen2
+ignore conky
+
+# top border for dzen
+gap 18 0 0 0
+
+# Source: http://undeadly.org/cgi?action=article&sid=20090502141551
+
+# customize some bindings (C-control M-alt M1-button1)
+bind-key CM-r       menu-exec
+bind-key 4-r		restart
+bind-key 4S-Q		quit
+bind-key CM-l       window-menu-label
+bind-key CM-t       "xterm -e \"top -s 0.6\""
+bind-key CM-m       menu-cmd
+bind-key CM-Return	urxvt
+bind-mouse M-1   window-move
+bind-mouse CM-1  window-resize
+bind-key 4-h		window-htile
+bind-key 4-v		window-vtile
+bind-key 4-1		window-movetogroup-1
+bind-key 4-2		window-movetogroup-2
+bind-key 4-3		window-movetogroup-3
+bind-key 4-4		window-movetogroup-4
+bind-key 4-5		window-movetogroup-5
+bind-key 4-6		window-movetogroup-6
+bind-key 4-7		window-movetogroup-7
+bind-key 4-8		window-movetogroup-8
+bind-key 4-9		window-movetogroup-9
+bind-key M-h        window-hide # for org-mode
+
+# application menu
+command Thunar Thunar
+command Wifi "urxvt -title \"wifi\" -e sh -c \"su -\""
+command Firefox firefox
+command Root "urxvt -title \"root\" -e sh -c \"su -\""
+command Top "urxvt -e top"
+command DeadBeef deadbeef
+#
+#
+# EXAMPLES
+# command pidgin  pidgin
+# command xchat   xchat
+#command wifi "urxvt -cd ~/wifi -title \"wifi\""
+# command silc    "xterm -class silc -e mysilc.sh"
+# command mail    "xterm -class mail -e \"menu-ssh my.mail.host\""
+
+# groups predefined, use xprop to get these from each program
+autogroup 1		"urxvt,URxvt"
+autogroup 2		"Firefox"
+autogroup 3		"libreoffice"
+autogroup 3     "libreoffice-writer"
+autogroup 4		"DeadBeef" # does not work
+autogroup 4     "Thunar"
+autogroup 9		"Emacs"
+
+autogroup 3     "pidgin"
+autogroup 3     "xchat"
+autogroup 3     "xterm,silc"
+autogroup 4     "xterm,mail"
+
+# inherit current selected group
+ sticky no
