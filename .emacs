@@ -11,7 +11,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (wombat)))
- '(package-selected-packages (quote (magit))))
+ '(package-selected-packages (quote (flycheck php-mode haskell-mode magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -80,3 +80,32 @@
 
 ;; Magit: open Magit status
 (global-set-key (kbd "C-x g") 'magit-status)
+
+(require 'org)
+(setcar (nthcdr 2 org-emphasis-regexp-components) " \t\r\n,\"")
+
+;; toggle word wrap in org-mode
+(add-hook 'org-mode-hook #'toggle-word-wrap)
+
+;; fix truncating lines
+(setq org-startup-truncated nil)
+
+;; function to insert zero length space
+(global-set-key (kbd "C-x 8 s") (lambda () (interactive) (insert "​")))
+
+;; unbind Ctrl-Z
+(global-unset-key (kbd "C-z"))
+
+;; (setq python-shell-interpreter "python3")
+
+;; flycheck
+(require 'flycheck)
+
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; (setq-local flycheck-python-pylint-executable "python3")
+
+;; (add-hook 'flycheck-mode-hook #'flycheck-virtualenv-setup)
+
+;; delete selected text
+(delete-selection-mode 1)
