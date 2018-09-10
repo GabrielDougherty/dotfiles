@@ -99,7 +99,7 @@
 ;; (setq python-shell-interpreter "python3")
 
 ;; flycheck
-(require 'flycheck)
+;; (require 'flycheck)
 
 ;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
