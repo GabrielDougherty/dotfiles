@@ -133,3 +133,6 @@
       telephone-line-evil-use-short-tag t)
 ;; configuration must end before here
 (telephone-line-mode 1)
+
+;; disable toolbar
+(tool-bar-mode -1)
