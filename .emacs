@@ -12,13 +12,14 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-enabled-themes (quote (solarized-light)))
  '(custom-safe-themes
    (quote
 	("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(ido-use-virtual-buffers t)
  '(package-selected-packages
    (quote
-	(solarized-theme telephone-line company racket-mode flycheck php-mode haskell-mode magit))))
+	(smex solarized-theme telephone-line company racket-mode flycheck php-mode haskell-mode magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -123,7 +124,6 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 
 ;; telephone-line
-
 (require 'telephone-line)
 (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
       telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
@@ -136,3 +136,14 @@
 
 ;; disable toolbar
 (tool-bar-mode -1)
+
+;; ido
+(require 'ido)
+(ido-mode t)
+
+;; smex rebind keys
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "<menu>") 'smex)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
