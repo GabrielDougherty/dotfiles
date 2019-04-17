@@ -10,8 +10,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (wombat)))
- '(package-selected-packages (quote (flycheck php-mode haskell-mode magit))))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-safe-themes
+   (quote
+	("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(package-selected-packages
+   (quote
+	(solarized-theme telephone-line company racket-mode flycheck php-mode haskell-mode magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -99,7 +106,7 @@
 ;; (setq python-shell-interpreter "python3")
 
 ;; flycheck
-;; (require 'flycheck)
+(require 'flycheck)
 
 ;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -109,3 +116,20 @@
 
 ;; delete selected text
 (delete-selection-mode 1)
+
+;; disable ding
+(setq visible-bell 1)
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+
+;; telephone-line
+
+(require 'telephone-line)
+(setq telephone-line-primary-left-separator 'telephone-line-cubed-left
+      telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
+      telephone-line-primary-right-separator 'telephone-line-cubed-right
+      telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right)
+(setq telephone-line-height 24
+      telephone-line-evil-use-short-tag t)
+;; configuration must end before here
+(telephone-line-mode 1)
