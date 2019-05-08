@@ -19,7 +19,7 @@
  '(ido-use-virtual-buffers t)
  '(package-selected-packages
    (quote
-	(smex solarized-theme telephone-line company racket-mode flycheck php-mode haskell-mode magit))))
+	(htmlize smooth-scroll restart-emacs smex solarized-theme telephone-line company racket-mode flycheck php-mode haskell-mode magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -121,7 +121,17 @@
 ;; disable ding
 (setq visible-bell 1)
 
+;; scroll mouse one line at a time (less "jumpy" than defaults)
+
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+
+;; (setq scroll-step 1) ;; keyboard scroll one line at a time
+
+;; smooth keyboard scrolling
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
 
 ;; telephone-line
 (require 'telephone-line)
