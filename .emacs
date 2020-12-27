@@ -17,23 +17,19 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes (quote (solarized-light)))
+ '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
-   (quote
-    ("d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+   '("7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" "96c56bd2aab87fd92f2795df76c3582d762a88da5c0e54d30c71562b7bf9c605" "d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default))
  '(ido-use-virtual-buffers t)
  '(package-selected-packages
-   (quote
-    (fill-column-indicator p4 htmlize smooth-scroll restart-emacs smex solarized-theme telephone-line company racket-mode flycheck php-mode haskell-mode magit))))
+   '(key-chord evil helm company-go mode-line-bell modus-vivendi-theme modus-operandi-theme fill-column-indicator restart-emacs telephone-line company magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(load "skill-mode.el")
+(setq default-directory "~/")
 
 ;; This hack fixes indentation for C++11's "enum class" in Emacs.
 ;; http://stackoverflow.com/questions/6497374/emacs-cc-mode-indentation-problem-with-c0x-enum-class/6550361#6550361
@@ -110,9 +106,6 @@
 
 ;; (setq python-shell-interpreter "python3")
 
-;; flycheck
-(require 'flycheck)
-
 ;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; (setq-local flycheck-python-pylint-executable "python3")
@@ -125,17 +118,6 @@
 ;; disable ding
 (setq visible-bell 1)
 
-;; scroll mouse one line at a time (less "jumpy" than defaults)
-
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
-;; (setq scroll-step 1) ;; keyboard scroll one line at a time
-
-;; smooth keyboard scrolling
-(require 'smooth-scrolling)
-(smooth-scrolling-mode 1)
 
 ;; telephone-line
 (require 'telephone-line)
@@ -151,36 +133,9 @@
 ;; disable toolbar
 (tool-bar-mode -1)
 
-;; ido
-(require 'ido)
-(ido-mode t)
-
-;; smex rebind keys
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "<menu>") 'smex)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-;; column marker (for work)
-(require 'column-marker)
-
-;; line at the right margin
-(setq fci-rule-width 1)
-(setq fci-rule-color "lightblue")
-(setq fci-rule-use-dashes t)
-(setq fci-dash-pattern 0.3)
-(setq fci-rule-column 79)
-(require 'fill-column-indicator)
-(fci-mode)
-(add-hook 'after-change-major-mode-hook 'fci-mode)
-
 ;; when in wrap-text-mode, wrap at 80
 (setq-default fill-column 80)
 
-
-;; perforce
-(require 'p4)
 
 ;; Workaround for error received when copying from VNC
 ;; (see bug report: http://emacs.1067599.n8.nabble.com/bug-23681-25-1-50-gui-get-selection-error-when-paste-from-windows-to-Emacs-25-through-vnc-td399376.html)
@@ -197,3 +152,24 @@
   t)
 (fset 'add-two-spaces
    [?\C-a ?\C-2 ?  ?\C-a ?\C-n])
+
+(mode-line-bell-mode)
+
+;; needed for my mac's emacs.app
+(setq default-directory "~/")
+(setq command-line-default-directory "~/")
+
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+
+(helm-mode 1)
+
+;; Enable Evil
+(require 'evil)
+(evil-mode 1)
+
+;; Exit insert mode by pressing j and then j quickly
+(setq key-chord-two-keys-delay 0.5)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+(key-chord-mode 1)
